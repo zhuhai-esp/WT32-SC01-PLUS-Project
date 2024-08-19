@@ -64,7 +64,7 @@ void setup() {
   Serial.begin(115200);
   tft.init();
   tft.initDMA();
-  tft.setBrightness(20);
+  tft.setBrightness(255);
   lv_init();
   lv_disp_init();
   lv_touch_init();
