@@ -1,0 +1,52 @@
+#ifndef LVGL_LVCHESS_H
+#define LVGL_LVCHESS_H
+
+#include "lvgl.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+LV_IMG_DECLARE(board)
+LV_IMG_DECLARE(ba)
+LV_IMG_DECLARE(ba2)
+LV_IMG_DECLARE(bb)
+LV_IMG_DECLARE(bb2)
+LV_IMG_DECLARE(bc)
+LV_IMG_DECLARE(bc2)
+LV_IMG_DECLARE(bk)
+LV_IMG_DECLARE(bk2)
+LV_IMG_DECLARE(bkm)
+LV_IMG_DECLARE(bkm2)
+LV_IMG_DECLARE(bn)
+LV_IMG_DECLARE(bn2)
+LV_IMG_DECLARE(bp)
+LV_IMG_DECLARE(bp2)
+LV_IMG_DECLARE(br)
+LV_IMG_DECLARE(br2)
+LV_IMG_DECLARE(ra)
+LV_IMG_DECLARE(ra2)
+LV_IMG_DECLARE(rb)
+LV_IMG_DECLARE(rb2)
+LV_IMG_DECLARE(rc)
+LV_IMG_DECLARE(rc2)
+LV_IMG_DECLARE(rk)
+LV_IMG_DECLARE(rk2)
+LV_IMG_DECLARE(rkm)
+LV_IMG_DECLARE(rkm2)
+LV_IMG_DECLARE(rn)
+LV_IMG_DECLARE(rn2)
+LV_IMG_DECLARE(rp)
+LV_IMG_DECLARE(rp2)
+LV_IMG_DECLARE(rr)
+LV_IMG_DECLARE(rr2)
+LV_IMG_DECLARE(selected)
+LV_IMG_DECLARE(selected2)
+
+void lv_chess_start();
+
+#ifdef __cplusplus
+} /*extern "C"*/
+#endif
+
+#endif //LVGL_LVCHESS_H
