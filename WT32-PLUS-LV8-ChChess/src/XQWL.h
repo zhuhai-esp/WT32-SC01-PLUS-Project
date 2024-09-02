@@ -41,7 +41,7 @@ const int PIECE_PAWN = 6;
 // 其他常数
 const int MAX_GEN_MOVES = 64; // 最大的生成走法数
 const int MAX_MOVES = 128;     // 最大的历史走法数
-const int LIMIT_DEPTH = 10;    // 最大的搜索深度
+const int LIMIT_DEPTH = 4;    // 最大的搜索深度
 const int MATE_VALUE = 10000;  // 最高分值，即将死的分值
 const int BAN_VALUE = MATE_VALUE - 100; // 长将判负的分值，低于该值将不写入置换表
 const int WIN_VALUE = MATE_VALUE - 200; // 搜索出胜负的分值界限，超出此值就说明已经搜索出杀棋了
@@ -55,10 +55,10 @@ const int HASH_ALPHA = 1;      // ALPHA节点的置换表项
 const int HASH_BETA = 2;       // BETA节点的置换表项
 const int HASH_PV = 3;         // PV节点的置换表项
 const int HIS_SIZE = 2048;
-const int BOOK_SIZE = 5000;   // 开局库大小
+const int BOOK_SIZE = 600;   // 开局库大小
 
 // 判断棋子是否在棋盘中的数组
-static const char PROGMEM ccInBoard[256] = {
+static const int8_t PROGMEM ccInBoard[256] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -78,7 +78,7 @@ static const char PROGMEM ccInBoard[256] = {
 };
 
 // 判断棋子是否在九宫的数组
-static const char PROGMEM ccInFort[256] = {
+static const int8_t PROGMEM ccInFort[256] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -98,7 +98,7 @@ static const char PROGMEM ccInFort[256] = {
 };
 
 // 判断步长是否符合特定走法的数组，1=帅(将)，2=仕(士)，3=相(象)
-static const char PROGMEM ccLegalSpan[512] = {
+static const int8_t PROGMEM ccLegalSpan[512] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

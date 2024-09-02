@@ -1,9 +1,8 @@
 #include "lgfx.h"
 #include <Arduino.h>
+#include <LvChess.h>
 #include <demos/lv_demos.h>
 #include <lvgl.h>
-#include <LvChess.h>
-
 
 #define LV_DISP_HOR_RES 320
 #define LV_DISP_VER_RES 480
@@ -14,7 +13,6 @@ static lv_disp_draw_buf_t draw_buf;
 static lv_disp_drv_t disp_drv;
 
 static lv_color_t disp_draw_buf[screenWidth * SCR];
-static lv_color_t disp_draw_buf2[screenWidth * SCR];
 
 /* Display flushing */
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area,
@@ -42,8 +40,7 @@ void my_touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data) {
 }
 
 void inline lv_disp_init() {
-  lv_disp_draw_buf_init(&draw_buf, disp_draw_buf, disp_draw_buf2,
-                        screenWidth * SCR);
+  lv_disp_draw_buf_init(&draw_buf, disp_draw_buf, nullptr, screenWidth * SCR);
   /* Initialize the display */
   lv_disp_drv_init(&disp_drv);
   /* Change the following line to your display resolution */
