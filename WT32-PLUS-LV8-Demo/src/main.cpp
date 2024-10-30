@@ -11,8 +11,9 @@ LGFX tft;
 static lv_disp_draw_buf_t draw_buf;
 static lv_disp_drv_t disp_drv;
 
-static lv_color_t disp_draw_buf[screenWidth * SCR];
-static lv_color_t disp_draw_buf2[screenWidth * SCR];
+static const uint32_t buf_size =
+    LV_DISP_HOR_RES * LV_DISP_VER_RES * sizeof(lv_color_t);
+static lv_color_t *dis_buf1;
 
 /* Display flushing */
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area,
@@ -40,8 +41,8 @@ void my_touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data) {
 }
 
 void inline lv_disp_init() {
-  lv_disp_draw_buf_init(&draw_buf, disp_draw_buf, disp_draw_buf2,
-                        screenWidth * SCR);
+  dis_buf1 = (lv_color_t *)ps_malloc(buf_size);
+  lv_disp_draw_buf_init(&draw_buf, dis_buf1, nullptr, buf_size);
   /* Initialize the display */
   lv_disp_drv_init(&disp_drv);
   /* Change the following line to your display resolution */
